@@ -1,4 +1,3 @@
-output "secret" {
-  value     = module.secret
-  sensitive = true
+output "log_group" {
+  value = module.log_group
 }

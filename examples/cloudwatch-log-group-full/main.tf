@@ -4,10 +4,10 @@ provider "aws" {
 
 
 ###################################################
-# Secrets Manager Secret
+# Log Group for CloudWatch Logs
 ###################################################
 
-module "secret" {
+module "log_group" {
   source = "../../modules/cloudwatch-log-group"
   # source  = "tedilabs/observability/aws//modules/cloudwatch-log-group"
   # version = "~> 0.1.0"
