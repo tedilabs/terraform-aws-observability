@@ -1,3 +1,5 @@
 # Modules
 ":floppy_disk: cloudwatch-log-group":
 - modules/cloudwatch-log-group/**/*
+":floppy_disk: cloudwatch-log-policy":
+- modules/cloudwatch-log-policy/**/*

@@ -43,3 +43,6 @@
 - color: "fbca04"
   description: "This issue or pull request is related to cloudwatch-log-group module."
   name: ":floppy_disk: cloudwatch-log-group"
+- color: "fbca04"
+  description: "This issue or pull request is related to cloudwatch-log-policy module."
+  name: ":floppy_disk: cloudwatch-log-policy"
