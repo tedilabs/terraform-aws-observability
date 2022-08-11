@@ -15,6 +15,7 @@ Terraform Modules from [this package](https://github.com/tedilabs/terraform-aws-
   - Alarms (Comming soon!)
   - Logs
     - Log Groups
+    - Resource Policy
   - Metrics (Comming soon!)
 
 
