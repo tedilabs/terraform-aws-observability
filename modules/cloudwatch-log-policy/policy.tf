@@ -6,6 +6,10 @@ locals {
   region     = data.aws_region.this.name
 
   service_actions = {
+    "delivery.logs.amazonaws.com" = [
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+    ]
     "es.amazonaws.com" = [
       "logs:CreateLogStream",
       "logs:PutLogEvents",
