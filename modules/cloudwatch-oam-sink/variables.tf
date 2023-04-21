@@ -1,25 +1,41 @@
 variable "name" {
-  description = "(Required) The name of the CloudWatch log group."
+  description = "(Required) The name of the CloudWatch OAM sink."
   type        = string
   nullable    = false
 }
 
-variable "retention_in_days" {
-  description = "(Optional) Specify the number of days to retain log events in the log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653, and 0. If you select 0, the events in the log group are always retained and never expire. Default to `90` days."
-  type        = number
-  default     = 90
-  nullable    = false
-}
-
-variable "encryption_kms_key" {
-  description = "(Optional) The ARN of the KMS Key to use when encrypting log data. Please note, after the AWS KMS CMK is disassociated from the log group, AWS CloudWatch Logs stops encrypting newly ingested data for the log group. All previously ingested data remains encrypted, and AWS CloudWatch Logs requires permissions for the CMK whenever the encrypted data is requested."
-  type        = string
-  default     = null
-}
-
-variable "streams" {
-  description = "(Optional) A list of log streams for the CloudWatch log group."
+variable "telemetry_types" {
+  description = "(Optional) A set of the telemetry types can be shared with it. Valid values are `AWS::CloudWatch::Metric`, `AWS::Logs::LogGroup`, `AWS::XRay::Trace`."
   type        = set(string)
+  default     = []
+  nullable    = false
+
+  validation {
+    condition = alltrue([
+      for telemetry_type in var.telemetry_types :
+      contains(["AWS::CloudWatch::Metric", "AWS::Logs::LogGroup", "AWS::XRay::Trace"], telemetry_type)
+    ])
+    error_message = "Valid values for `telemetry_types` are `AWS::CloudWatch::Metric`, `AWS::Logs::LogGroup`, `AWS::XRay::Trace`."
+  }
+}
+
+variable "allowed_source_accounts" {
+  description = "(Optional) A list of the IDs of AWS accounts that will share data with this monitoring account."
+  type        = list(string)
+  default     = []
+  nullable    = false
+}
+
+variable "allowed_source_organizations" {
+  description = "(Optional) A list of the organization IDs of AWS accounts that will share data with this monitoring account."
+  type        = list(string)
+  default     = []
+  nullable    = false
+}
+
+variable "allowed_source_organization_paths" {
+  description = "(Optional) A list of the organization paths of the AWS accounts that will share data with this monitoring account."
+  type        = list(string)
   default     = []
   nullable    = false
 }

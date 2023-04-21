@@ -3,3 +3,7 @@
 - modules/cloudwatch-log-group/**/*
 ":floppy_disk: cloudwatch-log-policy":
 - modules/cloudwatch-log-policy/**/*
+":floppy_disk: cloudwatch-oam-link":
+- modules/cloudwatch-oam-link/**/*
+":floppy_disk: cloudwatch-oam-sink":
+- modules/cloudwatch-oam-sink/**/*

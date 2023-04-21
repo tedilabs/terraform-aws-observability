@@ -17,6 +17,24 @@ Terraform Modules from [this package](https://github.com/tedilabs/terraform-aws-
     - Log Groups
     - Resource Policy
   - Metrics (Comming soon!)
+  - OAM (Observability Access Manager)
+    - Sink (Monitoring Account)
+    - Link (Source Account)
+
+
+## Examples
+
+### AWS CloudWatch
+
+#### Logs
+
+- [CloudWatch Log Group Full](./examples/cloudwatch-log-group-full)
+- [CloudWatch Log Policy for OpenSearch](./examples/cloudwatch-log-policy-es)
+- [CloudWatch Log Policy for Route53](./examples/cloudwatch-log-policy-route53)
+
+#### OAM (Observability Access Manager)
+
+- [CloudWatch OAM Cross Account Observability](./examples/cloudwatch-oam-cross-account-observability)
 
 
 ## Self Promotion

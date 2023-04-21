@@ -1,0 +1,78 @@
+variable "name" {
+  description = "(Required) The name of the CloudWatch OAM link."
+  type        = string
+  nullable    = false
+}
+
+variable "sink" {
+  description = "(Required) The ARN of the sink to use to create this link."
+  type        = string
+  nullable    = false
+}
+
+variable "account_label" {
+  description = <<EOF
+  (Optional) A label to help identify your source account. In the monitoring account, the account label is displayed with data from that source account. The account label is displayed in charts and search experiences to help you identify account context. Support use following template variables. Defaults to `$AccountName`.
+  - `$AccountName`: Account name used to identify accounts.
+  - `$AccountEmail`: Email address used to identify accounts. (i.e. name@amazon.com)
+  - `$AccountEmailNoDomain`: Email address without domain (i.e. without @amazon.com) used to identify accounts.
+  EOF
+  type        = string
+  default     = "$AccountName"
+  nullable    = false
+}
+
+variable "telemetry_types" {
+  description = "(Optional) A set of the telemetry types that the source account shares with the monitoring account. Valid values are `AWS::CloudWatch::Metric`, `AWS::Logs::LogGroup`, `AWS::XRay::Trace`."
+  type        = set(string)
+  default     = []
+  nullable    = false
+
+  validation {
+    condition = alltrue([
+      for telemetry_type in var.telemetry_types :
+      contains(["AWS::CloudWatch::Metric", "AWS::Logs::LogGroup", "AWS::XRay::Trace"], telemetry_type)
+    ])
+    error_message = "Valid values for `telemetry_types` are `AWS::CloudWatch::Metric`, `AWS::Logs::LogGroup`, `AWS::XRay::Trace`."
+  }
+}
+
+variable "tags" {
+  description = "(Optional) A map of tags to add to all resources."
+  type        = map(string)
+  default     = {}
+  nullable    = false
+}
+
+variable "module_tags_enabled" {
+  description = "(Optional) Whether to create AWS Resource Tags for the module informations."
+  type        = bool
+  default     = true
+  nullable    = false
+}
+
+
+###################################################
+# Resource Group
+###################################################
+
+variable "resource_group_enabled" {
+  description = "(Optional) Whether to create Resource Group to find and group AWS resources which are created by this module."
+  type        = bool
+  default     = true
+  nullable    = false
+}
+
+variable "resource_group_name" {
+  description = "(Optional) The name of Resource Group. A Resource Group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`."
+  type        = string
+  default     = ""
+  nullable    = false
+}
+
+variable "resource_group_description" {
+  description = "(Optional) The description of Resource Group."
+  type        = string
+  default     = "Managed by Terraform."
+  nullable    = false
+}

@@ -10,7 +10,7 @@ provider "aws" {
 module "log_group" {
   source = "../../modules/cloudwatch-log-group"
   # source  = "tedilabs/observability/aws//modules/cloudwatch-log-group"
-  # version = "~> 0.1.0"
+  # version = "~> 0.2.0"
 
   name = "/tedilabs/test"
 
@@ -23,6 +23,6 @@ module "log_group" {
   ]
 
   tags = {
-    "project" = "terraform-aws-secret-examples"
+    "project" = "terraform-aws-observability-examples"
   }
 }
