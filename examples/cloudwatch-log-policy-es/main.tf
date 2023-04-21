@@ -11,7 +11,7 @@ data "aws_caller_identity" "this" {}
 module "log_policy" {
   source = "../../modules/cloudwatch-log-policy"
   # source  = "tedilabs/observability/aws//modules/cloudwatch-log-policy"
-  # version = "~> 0.1.0"
+  # version = "~> 0.2.0"
 
   name    = "es"
   service = "es.amazonaws.com"
