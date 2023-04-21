@@ -1,6 +1,7 @@
 variable "name" {
   description = "(Required) The name of the CloudWatch Logs resource policy."
   type        = string
+  nullable    = false
 }
 
 variable "service" {
