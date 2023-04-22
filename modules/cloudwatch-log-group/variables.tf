@@ -4,8 +4,15 @@ variable "name" {
   nullable    = false
 }
 
+variable "skip_destroy" {
+  description = "(Optional) Set to true if you do not wish the log group to be deleted at destroy time, and instead just remove the log group from the Terraform state. Defaults to `false`."
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
 variable "retention_in_days" {
-  description = "(Optional) Specify the number of days to retain log events in the log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653, and 0. If you select 0, the events in the log group are always retained and never expire. Default to `90` days."
+  description = "(Optional) Specify the number of days to retain log events in the log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1096, 1827, 2192, 2557, 2922, 3288, 3653, and 0. If you select 0, the events in the log group are always retained and never expire. Default to `90` days."
   type        = number
   default     = 90
   nullable    = false

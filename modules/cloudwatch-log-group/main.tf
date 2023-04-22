@@ -19,8 +19,11 @@ locals {
 # CloudWatch Log Group
 ###################################################
 
+# INFO: Not supported attributes
+# - `name_prefix` (Not used)
 resource "aws_cloudwatch_log_group" "this" {
-  name = var.name
+  name         = var.name
+  skip_destroy = var.skip_destroy
 
   retention_in_days = var.retention_in_days
   kms_key_id        = var.encryption_kms_key
