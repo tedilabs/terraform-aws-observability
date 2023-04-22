@@ -12,7 +12,8 @@ module "log_group" {
   # source  = "tedilabs/observability/aws//modules/cloudwatch-log-group"
   # version = "~> 0.2.0"
 
-  name = "/tedilabs/test"
+  name         = "/tedilabs/test"
+  skip_destroy = false
 
   retention_in_days  = 7
   encryption_kms_key = null
