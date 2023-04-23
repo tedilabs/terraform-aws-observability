@@ -6,6 +6,11 @@
 
 Terraform module which creates observability related resources on AWS.
 
+- [cloudwatch-log-group](./modules/cloudwatch-log-group)
+- [cloudwatch-log-policy](./modules/cloudwatch-log-policy)
+- [cloudwatch-oam-link](./modules/cloudwatch-oam-link)
+- [cloudwatch-oam-sink](./modules/cloudwatch-oam-sink)
+
 
 ## Target AWS Services
 
@@ -28,6 +33,7 @@ Terraform Modules from [this package](https://github.com/tedilabs/terraform-aws-
 
 #### Logs
 
+- [CloudWatch Log Group Simple](./examples/cloudwatch-log-group-simple)
 - [CloudWatch Log Group Full](./examples/cloudwatch-log-group-full)
 - [CloudWatch Log Policy for OpenSearch](./examples/cloudwatch-log-policy-es)
 - [CloudWatch Log Policy for Route53](./examples/cloudwatch-log-policy-route53)

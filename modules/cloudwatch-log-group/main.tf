@@ -48,3 +48,34 @@ resource "aws_cloudwatch_log_stream" "this" {
   name           = each.key
   log_group_name = aws_cloudwatch_log_group.this.name
 }
+
+
+###################################################
+# Metric Filters for CloudWatch Log Group
+###################################################
+
+resource "aws_cloudwatch_log_metric_filter" "this" {
+  for_each = {
+    for metric_filter in var.metric_filters :
+    metric_filter.name => metric_filter
+  }
+
+  log_group_name = aws_cloudwatch_log_group.this.name
+  name           = each.key
+  pattern        = each.value.pattern
+
+  dynamic "metric_transformation" {
+    for_each = [each.value.metric]
+    iterator = metric
+
+    content {
+      namespace = metric.value.namespace
+      name      = metric.value.name
+
+      value         = metric.value.value
+      default_value = metric.value.default_value
+      dimensions    = metric.value.dimensions
+      unit          = metric.value.unit
+    }
+  }
+}
