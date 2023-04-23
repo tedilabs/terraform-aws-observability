@@ -25,17 +25,55 @@ module "log_group" {
 
   metric_filters = [
     {
-      name    = "error-filter"
-      pattern = "err"
+      name    = "event-count"
+      pattern = ""
 
       metric = {
-        namespace     = "Custom/Test"
-        name          = "Errors"
+        namespace     = "Custom/Example"
+        name          = "EventCount"
         value         = "1"
         default_value = "0"
         unit          = "None"
       }
-    }
+    },
+    {
+      name    = "error-count"
+      pattern = "Error"
+
+      metric = {
+        namespace     = "Custom/Example"
+        name          = "ErrorCount"
+        value         = "1"
+        default_value = "0"
+        unit          = "None"
+      }
+    },
+    {
+      name    = "apache-404-count"
+      pattern = "[ip, id, user, timestamp, request, status_code=404, size]"
+
+      metric = {
+        namespace     = "Custom/Example"
+        name          = "ApacheNotFoundErrorCount"
+        value         = "1"
+        default_value = "0"
+        unit          = "None"
+      }
+    },
+    {
+      name    = "apache-bytes-transferred"
+      pattern = "[ip, id, user, timestamp, request, status_code, size]"
+
+      metric = {
+        namespace = "Custom/Example"
+        name      = "ApacheBytesTransferred"
+        value     = "$size"
+        unit      = "Bytes"
+        dimensions = {
+          "IP" = "$ip"
+        }
+      }
+    },
   ]
 
   tags = {
