@@ -33,3 +33,24 @@ output "streams" {
     }
   }
 }
+
+output "metric_filters" {
+  description = "The list of metric filters for the log group."
+  value = {
+    for name, filter in aws_cloudwatch_log_metric_filter.this :
+    name => {
+      id      = filter.id
+      name    = filter.name
+      pattern = filter.pattern
+      metric = {
+        namespace = one(filter.metric_transformation[*].namespace)
+        name      = one(filter.metric_transformation[*].name)
+
+        value         = one(filter.metric_transformation[*].value)
+        default_value = one(filter.metric_transformation[*].default_value)
+        dimensions    = one(filter.metric_transformation[*].dimensions)
+        unit          = one(filter.metric_transformation[*].unit)
+      }
+    }
+  }
+}

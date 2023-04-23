@@ -31,6 +31,35 @@ variable "streams" {
   nullable    = false
 }
 
+variable "metric_filters" {
+  description = <<EOF
+  (Required) A list of metric filters for CloudWatch log group. Log events that match the pattern you define are recorded to the metric that you specify. You can graph the metric and set alarms to notify you. Each item of `metric_filters` as defined below.
+    (Required) `name` - A name for the metric filter.
+    (Optional) `pattern` - A valid CloudWatch Logs filter pattern for extracting metric data out of ingested log events.
+    (Required) `metric` - A configuration to define how metric data gets emitted. `metric` as defined below.
+      (Required) `namespace` - The destination namespace of the CloudWatch metric. Namespace let you group similar metrics. Can be up to 255 characters long; all characters are valid except for colon(:), asterisk(*), dollar($), and space( ).
+      (Required) `name` - The name of the CloudWatch metric to which the monitored log information should be published. Must be unique within the namespace.
+      (Required) `value` - What to publish to the metric. For example, if you're counting the occurrences of a particular term like "Error", the value will be "1" for each occurrence. If you're counting the bytes transferred the published value will be the value in the log event.
+      (Optional) `default_value` - The value to emit when a filter pattern does not match a log event. Conflicts with `dimensions`.
+      (Optional) `dimensions` - A map of fields to use as dimensions for the metric. Up to 3 dimensions are allowed. Conflicts with `default_value`.
+      (Optional) `unit` - The unit to assign to the metric. Defaults to `None`.
+  EOF
+  type = list(object({
+    name    = string
+    pattern = optional(string, "")
+    metric = object({
+      namespace     = string
+      name          = string
+      value         = string
+      default_value = optional(string)
+      dimensions    = optional(map(string))
+      unit          = optional(string, "None")
+    })
+  }))
+  default  = []
+  nullable = false
+}
+
 variable "tags" {
   description = "(Optional) A map of tags to add to all resources."
   type        = map(string)

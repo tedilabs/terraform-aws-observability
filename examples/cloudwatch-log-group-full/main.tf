@@ -23,6 +23,21 @@ module "log_group" {
     "test-stream-2",
   ]
 
+  metric_filters = [
+    {
+      name    = "error-filter"
+      pattern = "err"
+
+      metric = {
+        namespace     = "Custom/Test"
+        name          = "Errors"
+        value         = "1"
+        default_value = "0"
+        unit          = "None"
+      }
+    }
+  ]
+
   tags = {
     "project" = "terraform-aws-observability-examples"
   }
