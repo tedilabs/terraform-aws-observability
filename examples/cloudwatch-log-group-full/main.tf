@@ -25,8 +25,7 @@ module "log_group" {
 
   metric_filters = [
     {
-      name    = "event-count"
-      pattern = ""
+      name = "event-count"
 
       metric = {
         namespace     = "Custom/Example"
