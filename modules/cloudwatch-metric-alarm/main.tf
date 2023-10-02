@@ -56,7 +56,7 @@ resource "aws_cloudwatch_metric_alarm" "this" {
 
   ## Evaluation
   comparison_operator = var.evaluation.operator
-  threshold           = (var.evaluation.threshold.type == "STATIC"
+  threshold = (var.evaluation.threshold.type == "STATIC"
     ? var.evaluation.threshold.value
     : null
   )
@@ -64,7 +64,7 @@ resource "aws_cloudwatch_metric_alarm" "this" {
   evaluation_periods  = var.evaluation.period
   datapoints_to_alarm = var.evaluation.violation_limit
 
-  treat_missing_data                    = local.missing_data_treatment[var.evaluation.missing_data_treatment]
+  treat_missing_data = local.missing_data_treatment[var.evaluation.missing_data_treatment]
   evaluate_low_sample_count_percentiles = (contains(local.aggregation_statistics, var.metric.statistic)
     ? null
     : local.low_sample_percentile_treatment[var.evaluation.low_sample_percentile_treatment]

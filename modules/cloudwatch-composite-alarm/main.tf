@@ -28,8 +28,8 @@ resource "aws_cloudwatch_composite_alarm" "this" {
   ## Actions
   actions_enabled = var.actions_enabled
 
-  ok_actions = var.actions_on_ok
-  alarm_actions = var.actions_on_alarm
+  ok_actions                = var.actions_on_ok
+  alarm_actions             = var.actions_on_alarm
   insufficient_data_actions = var.actions_on_insufficient_data
 
   tags = merge(

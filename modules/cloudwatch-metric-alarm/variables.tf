@@ -64,20 +64,20 @@ variable "evaluation" {
   type = object({
     operator = string
     threshold = object({
-      type = optional(string, "STATIC")
+      type  = optional(string, "STATIC")
       value = number
     })
 
     period          = optional(number, 1)
     violation_limit = optional(number, 1)
 
-    missing_data_treatment = optional(string, "MISSING")
+    missing_data_treatment          = optional(string, "MISSING")
     low_sample_percentile_treatment = optional(string)
   })
   nullable = false
 
   validation {
-    condition     = anytrue([
+    condition = anytrue([
       alltrue([
         var.evaluation.threshold.type == "STATIC",
         contains(["GreaterThanOrEqualToThreshold", "GreaterThanThreshold", "LessThanThreshold", "LessThanOrEqualToThreshold"], var.evaluation.operator),

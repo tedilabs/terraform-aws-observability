@@ -29,14 +29,14 @@ output "metric" {
     `unit` - The unit of measure for the statistic.
     `period` - The length, in seconds, used each time the metric is evaluated.
   EOF
-  value       = {
-    namespace = aws_cloudwatch_metric_alarm.this.namespace
-    name = aws_cloudwatch_metric_alarm.this.metric_name
+  value = {
+    namespace  = aws_cloudwatch_metric_alarm.this.namespace
+    name       = aws_cloudwatch_metric_alarm.this.metric_name
     dimensions = aws_cloudwatch_metric_alarm.this.dimensions
 
     statistic = aws_cloudwatch_metric_alarm.this.statistic
-    unit = aws_cloudwatch_metric_alarm.this.unit
-    period = aws_cloudwatch_metric_alarm.this.period
+    unit      = aws_cloudwatch_metric_alarm.this.unit
+    period    = aws_cloudwatch_metric_alarm.this.period
   }
 }
 
@@ -52,11 +52,11 @@ output "evaluation" {
     `missing_data_treatment` - How this alarm is to handle missing data points.
     `low_sample_percentile_treatment` - How to treat percentiles with low samples.
   EOF
-  value       = {
-    operator = aws_cloudwatch_metric_alarm.this.comparison_operator
+  value = {
+    operator  = aws_cloudwatch_metric_alarm.this.comparison_operator
     threshold = var.evaluation.threshold
 
-    period = aws_cloudwatch_metric_alarm.this.evaluation_periods
+    period          = aws_cloudwatch_metric_alarm.this.evaluation_periods
     violation_limit = aws_cloudwatch_metric_alarm.this.datapoints_to_alarm
 
     missing_data_treatment = {
@@ -78,10 +78,10 @@ output "trigger" {
     `actions_on_alarm` - The set of actions to execute when this alarm transitions to an `ALARM` state from any other state.
     `actions_on_insufficient_data` - The set of actions to execute when this alarm transitions to an `INSUFFICIENT_DATA` state from any other state.
   EOF
-  value       = {
-    enabled = aws_cloudwatch_metric_alarm.this.actions_enabled
-    actions_on_ok = coalesce(aws_cloudwatch_metric_alarm.this.ok_actions, toset([]))
-    actions_on_alarm = coalesce(aws_cloudwatch_metric_alarm.this.alarm_actions, toset([]))
+  value = {
+    enabled                      = aws_cloudwatch_metric_alarm.this.actions_enabled
+    actions_on_ok                = coalesce(aws_cloudwatch_metric_alarm.this.ok_actions, toset([]))
+    actions_on_alarm             = coalesce(aws_cloudwatch_metric_alarm.this.alarm_actions, toset([]))
     actions_on_insufficient_data = coalesce(aws_cloudwatch_metric_alarm.this.insufficient_data_actions, toset([]))
   }
 }
