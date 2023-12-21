@@ -5,13 +5,13 @@ variable "name" {
 }
 
 variable "service" {
-  description = "(Required) Specify the identity of the AWS service principal to allow delivering logs to this account. Valid values are `delivery.logs.amazonaws.com`, `es.amazonaws.com`, `route53.amazonaws.com`."
+  description = "(Required) Specify the identity of the AWS service principal to allow delivering logs to this account. Valid values are `delivery.logs.amazonaws.com`, `es.amazonaws.com`, `events.amazonaws.com`, `route53.amazonaws.com`."
   type        = string
   nullable    = false
 
   validation {
-    condition     = contains(["delivery.logs.amazonaws.com", "es.amazonaws.com", "route53.amazonaws.com"], var.service)
-    error_message = "Valid values for `service` are `delivery.logs.amazonaws.com`, `es.amazonaws.com`, `route53.amazonaws.com`."
+    condition     = contains(["delivery.logs.amazonaws.com", "es.amazonaws.com", "events.amazonaws.com", "route53.amazonaws.com"], var.service)
+    error_message = "Valid values for `service` are `delivery.logs.amazonaws.com`, `es.amazonaws.com`, `events.amazonaws.com`, `route53.amazonaws.com`."
   }
 }
 

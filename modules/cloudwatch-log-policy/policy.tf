@@ -5,20 +5,45 @@ locals {
   account_id = data.aws_caller_identity.this.account_id
   region     = data.aws_region.this.name
 
-  service_actions = {
-    "delivery.logs.amazonaws.com" = [
-      "logs:CreateLogStream",
-      "logs:PutLogEvents",
-    ]
-    "es.amazonaws.com" = [
-      "logs:CreateLogStream",
-      "logs:PutLogEvents",
-      "logs:PutLogEventsBatch",
-    ]
-    "route53.amazonaws.com" = [
-      "logs:CreateLogStream",
-      "logs:PutLogEvents",
-    ]
+  service_statements = {
+    "delivery.logs.amazonaws.com" = {
+      services = [
+        "delivery.logs.amazonaws.com",
+      ]
+      actions = [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+      ]
+    }
+    "es.amazonaws.com" = {
+      services = [
+        "es.amazonaws.com",
+      ]
+      actions = [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:PutLogEventsBatch",
+      ]
+    }
+    "events.amazonaws.com" = {
+      services = [
+        "events.amazonaws.com",
+        "delivery.logs.amazonaws.com",
+      ]
+      actions = [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+      ]
+    }
+    "route53.amazonaws.com" = {
+      services = [
+        "route53.amazonaws.com",
+      ]
+      actions = [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+      ]
+    }
   }
 }
 
@@ -33,7 +58,7 @@ data "aws_iam_policy_document" "this" {
     content {
       sid = "${var.name}-${statement.key}"
 
-      actions = local.service_actions[var.service]
+      actions = local.service_statements[var.service].actions
 
       resources = [
         for log_group in statement.value.log_groups :
@@ -41,7 +66,7 @@ data "aws_iam_policy_document" "this" {
       ]
 
       principals {
-        identifiers = [var.service]
+        identifiers = local.service_statements[var.service].services
         type        = "Service"
       }
 
