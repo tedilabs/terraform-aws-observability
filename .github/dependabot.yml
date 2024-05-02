@@ -1,6 +1,15 @@
 version: 2
 updates:
-- package-ecosystem: "github-actions"
-  directory: "/"
+- package-ecosystem: github-actions
+  directory: /
   schedule:
-    interval: "daily"
+    interval: daily
+
+- package-ecosystem: terraform
+  directories:
+  - /modules/cloudwatch-log-group
+  - /modules/cloudwatch-log-policy
+  - /modules/cloudwatch-oam-link
+  - /modules/cloudwatch-oam-sink
+  schedule:
+    interval: weekly
