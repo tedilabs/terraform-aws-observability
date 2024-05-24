@@ -23,7 +23,7 @@ variable "account_label" {
 }
 
 variable "telemetry_types" {
-  description = "(Optional) A set of the telemetry types that the source account shares with the monitoring account. Valid values are `AWS::CloudWatch::Metric`, `AWS::Logs::LogGroup`, `AWS::XRay::Trace`."
+  description = "(Optional) A set of the telemetry types that the source account shares with the monitoring account. Valid values are `AWS::CloudWatch::Metric`, `AWS::Logs::LogGroup`, `AWS::XRay::Trace`, `AWS::ApplicationInsights::Application`, `AWS::InternetMonitor::Monitor`."
   type        = set(string)
   default     = []
   nullable    = false
@@ -31,9 +31,9 @@ variable "telemetry_types" {
   validation {
     condition = alltrue([
       for telemetry_type in var.telemetry_types :
-      contains(["AWS::CloudWatch::Metric", "AWS::Logs::LogGroup", "AWS::XRay::Trace"], telemetry_type)
+      contains(["AWS::CloudWatch::Metric", "AWS::Logs::LogGroup", "AWS::XRay::Trace", "AWS::ApplicationInsights::Application", "AWS::InternetMonitor::Monitor"], telemetry_type)
     ])
-    error_message = "Valid values for `telemetry_types` are `AWS::CloudWatch::Metric`, `AWS::Logs::LogGroup`, `AWS::XRay::Trace`."
+    error_message = "Valid values for `telemetry_types` are `AWS::CloudWatch::Metric`, `AWS::Logs::LogGroup`, `AWS::XRay::Trace`, `AWS::ApplicationInsights::Application`, `AWS::InternetMonitor::Monitor`."
   }
 }
 
