@@ -1,9 +1,20 @@
 # Modules
 ":floppy_disk: cloudwatch-log-group":
-- modules/cloudwatch-log-group/**/*
+- changed-files:
+  - any-glob-to-any-file:
+    - modules/cloudwatch-log-group/**/*
+
 ":floppy_disk: cloudwatch-log-policy":
-- modules/cloudwatch-log-policy/**/*
+- changed-files:
+  - any-glob-to-any-file:
+    - modules/cloudwatch-log-policy/**/*
+
 ":floppy_disk: cloudwatch-oam-link":
-- modules/cloudwatch-oam-link/**/*
+- changed-files:
+  - any-glob-to-any-file:
+    - modules/cloudwatch-oam-link/**/*
+
 ":floppy_disk: cloudwatch-oam-sink":
-- modules/cloudwatch-oam-sink/**/*
+- changed-files:
+  - any-glob-to-any-file:
+    - modules/cloudwatch-oam-sink/**/*
