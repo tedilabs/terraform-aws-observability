@@ -7,9 +7,6 @@ updates:
 
 - package-ecosystem: terraform
   directories:
-  - /modules/cloudwatch-log-group
-  - /modules/cloudwatch-log-policy
-  - /modules/cloudwatch-oam-link
-  - /modules/cloudwatch-oam-sink
+  - /modules/*
   schedule:
     interval: weekly
