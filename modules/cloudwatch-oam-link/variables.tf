@@ -37,6 +37,30 @@ variable "telemetry_types" {
   }
 }
 
+variable "log_group_configuration" {
+  description = <<EOF
+  (Optional) A configuration for filtering which log groups are to send log events from the source account to the monitoring account. `log_group_configuration` as defined below.
+    (Optional) `filter` - Filter string that specifies which log groups are to share their log events with the monitoring account.
+  EOF
+  type = object({
+    filter = optional(string, "")
+  })
+  default  = {}
+  nullable = false
+}
+
+variable "metric_configuration" {
+  description = <<EOF
+  (Optional) A configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. `log_group_configuration` as defined below.
+    (Optional) `filter` - Filter string that specifies which metrics are to be shared with the monitoring account.
+  EOF
+  type = object({
+    filter = optional(string, "")
+  })
+  default  = {}
+  nullable = false
+}
+
 variable "tags" {
   description = "(Optional) A map of tags to add to all resources."
   type        = map(string)
