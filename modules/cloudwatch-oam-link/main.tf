@@ -25,6 +25,27 @@ resource "aws_oam_link" "this" {
   label_template = var.account_label
   resource_types = var.telemetry_types
 
+  dynamic "link_configuration" {
+    for_each = (var.log_group_configuration.filter != "" || var.metric_configuration.filter != "") ? ["go"] : []
+
+    content {
+      dynamic "log_group_configuration" {
+        for_each = var.log_group_configuration.filter != "" ? [var.log_group_configuration] : []
+
+        content {
+          filter = log_group_configuration.value.filter
+        }
+      }
+      dynamic "metric_configuration" {
+        for_each = var.metric_configuration.filter != "" ? [var.metric_configuration] : []
+
+        content {
+          filter = metric_configuration.value.filter
+        }
+      }
+    }
+  }
+
   tags = merge(
     {
       "Name" = local.metadata.name

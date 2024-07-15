@@ -30,3 +30,13 @@ output "telemetry_types" {
   description = "A set of the telemetry types that the source account shares with the monitoring account."
   value       = aws_oam_link.this.resource_types
 }
+
+output "log_group_configuration" {
+  description = "A configuration for filtering which log groups are to send log events from the source account to the monitoring account."
+  value       = var.log_group_configuration
+}
+
+output "metric_configuration" {
+  description = "A configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account."
+  value       = var.metric_configuration
+}
