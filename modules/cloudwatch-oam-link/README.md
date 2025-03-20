@@ -3,7 +3,7 @@ This module creates following resources.
 
 - `aws_oam_link`
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -57,4 +57,4 @@ This module creates following resources.
 | <a name="output_name"></a> [name](#output\_name) | The name of CloudWatch OAM link. |
 | <a name="output_sink"></a> [sink](#output\_sink) | The information of the sink for this link. |
 | <a name="output_telemetry_types"></a> [telemetry\_types](#output\_telemetry\_types) | A set of the telemetry types that the source account shares with the monitoring account. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

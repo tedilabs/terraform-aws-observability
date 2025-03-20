@@ -4,7 +4,7 @@ This module creates following resources.
 - `aws_oam_sink`
 - `aws_oam_sink_policy` (optional)
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -57,4 +57,4 @@ This module creates following resources.
 | <a name="output_id"></a> [id](#output\_id) | The ID of the CloudWatch OAM sink. |
 | <a name="output_name"></a> [name](#output\_name) | The name of CloudWatch OAM sink. |
 | <a name="output_telemetry_types"></a> [telemetry\_types](#output\_telemetry\_types) | A set of the telemetry types can be shared with it. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

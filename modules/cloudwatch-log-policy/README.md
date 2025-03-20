@@ -4,7 +4,7 @@ This module creates following resources.
 
 - `aws_cloudwatch_log_policy`
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -46,4 +46,4 @@ No modules.
 | <a name="output_name"></a> [name](#output\_name) | The name of CloudWatch Logs resource policy. |
 | <a name="output_service"></a> [service](#output\_service) | The identity of the AWS service principal which is allowed to delivery logs to this account. |
 | <a name="output_statements"></a> [statements](#output\_statements) | The list of statements for CloudWatch Logs resource policy. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

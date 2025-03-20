@@ -6,7 +6,7 @@ This module creates following resources.
 - `aws_cloudwatch_log_stream` (optional)
 - `aws_cloudwatch_log_metric_filter` (optional)
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -61,4 +61,4 @@ This module creates following resources.
 | <a name="output_name"></a> [name](#output\_name) | The name of CloudWatch log group. |
 | <a name="output_retention_in_days"></a> [retention\_in\_days](#output\_retention\_in\_days) | The number of days to retain log events in the log group. |
 | <a name="output_streams"></a> [streams](#output\_streams) | The list of log streams for the log group. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
