@@ -32,3 +32,19 @@ output "allowed_source_organization_paths" {
   description = "A list of the organization paths of AWS accounts allowed to share data with this monitoring account."
   value       = var.allowed_source_organization_paths
 }
+
+output "resource_group" {
+  description = "The resource group created to manage resources in this module."
+  value = merge(
+    {
+      enabled = var.resource_group.enabled && var.module_tags_enabled
+    },
+    (var.resource_group.enabled && var.module_tags_enabled
+      ? {
+        arn  = module.resource_group[0].arn
+        name = module.resource_group[0].name
+      }
+      : {}
+    )
+  )
+}
