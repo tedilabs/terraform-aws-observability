@@ -19,10 +19,28 @@ variable "statements" {
   description = <<EOF
   (Required) A list of statements for CloudWatch Logs resource policy. Each item of `statements` as defined below.
     (Required) `log_groups` - A list of Log group patterns that the resource policy applies to. Whildcard is supported. Configure `*` to allow all log groups.
-    (Optional) `account_whiteilst` - A whitelist of AWS Account IDs making the call to CloudWatch Logs.
-    (Optional) `resource_whiteilst` - A whitelist of the ARN of AWS resources making the call to CloudWatch Logs.
+    (Optional) `account_whitelist` - A whitelist of AWS Account IDs making the call to CloudWatch Logs.
+    (Optional) `resource_whitelist` - A whitelist of the ARN of AWS resources making the call to CloudWatch Logs.
   EOF
   type        = list(map(set(string)))
   default     = []
   nullable    = false
+
+  validation {
+    condition = alltrue([
+      for statement in var.statements :
+      contains(keys(statement), "log_groups")
+    ])
+    error_message = "Each item of `statements` must have `log_groups`."
+  }
+
+  validation {
+    condition = alltrue(flatten([
+      for statement in var.statements : [
+        for key in keys(statement) :
+        contains(["log_groups", "account_whitelist", "resource_whitelist"], key)
+      ]
+    ]))
+    error_message = "Valid keys for each item of `statements` are `log_groups`, `account_whitelist` and `resource_whitelist`."
+  }
 }
