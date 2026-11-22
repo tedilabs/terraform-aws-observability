@@ -51,7 +51,7 @@ variable "log_group_configuration" {
 
 variable "metric_configuration" {
   description = <<EOF
-  (Optional) A configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. `log_group_configuration` as defined below.
+  (Optional) A configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. `metric_configuration` as defined below.
     (Optional) `filter` - Filter string that specifies which metrics are to be shared with the monitoring account.
   EOF
   type = object({

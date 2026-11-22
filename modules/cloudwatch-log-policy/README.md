@@ -2,7 +2,7 @@
 
 This module creates following resources.
 
-- `aws_cloudwatch_log_policy`
+- `aws_cloudwatch_log_resource_policy`
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
