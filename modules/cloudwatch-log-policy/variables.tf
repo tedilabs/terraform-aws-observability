@@ -18,7 +18,7 @@ variable "service" {
 variable "statements" {
   description = <<EOF
   (Required) A list of statements for CloudWatch Logs resource policy. Each item of `statements` as defined below.
-    (Required) `log_groups` - A list of Log group patterns that the resource policy applies to. Whildcard is supported. Configure `*` to allow all log groups.
+    (Required) `log_groups` - A list of Log group patterns that the resource policy applies to. Wildcard is supported. Configure `*` to allow all log groups.
     (Optional) `account_whitelist` - A whitelist of AWS Account IDs making the call to CloudWatch Logs.
     (Optional) `resource_whitelist` - A whitelist of the ARN of AWS resources making the call to CloudWatch Logs.
   EOF

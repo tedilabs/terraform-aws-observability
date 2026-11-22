@@ -17,11 +17,11 @@ Terraform module which creates observability related resources on AWS.
 Terraform Modules from [this package](https://github.com/tedilabs/terraform-aws-observability) were written to manage the following AWS Services with Terraform.
 
 - **AWS CloudWatch**
-  - Alarms (Comming soon!)
+  - Alarms (Coming soon!)
   - Logs
     - Log Groups
     - Resource Policy
-  - Metrics (Comming soon!)
+  - Metrics (Coming soon!)
   - OAM (Observability Access Manager)
     - Sink (Monitoring Account)
     - Link (Source Account)
