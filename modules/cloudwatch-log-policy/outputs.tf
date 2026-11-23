@@ -4,7 +4,7 @@ output "name" {
 }
 
 output "service" {
-  description = "The identity of the AWS service principal which is allowed to delivery logs to this account."
+  description = "The identity of the AWS service principal which is allowed to deliver logs to this account."
   value       = var.service
 }
 

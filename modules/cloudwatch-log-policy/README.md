@@ -46,6 +46,6 @@ No modules.
 | Name | Description |
 | ---- | ----------- |
 | <a name="output_name"></a> [name](#output\_name) | The name of CloudWatch Logs resource policy. |
-| <a name="output_service"></a> [service](#output\_service) | The identity of the AWS service principal which is allowed to delivery logs to this account. |
+| <a name="output_service"></a> [service](#output\_service) | The identity of the AWS service principal which is allowed to deliver logs to this account. |
 | <a name="output_statements"></a> [statements](#output\_statements) | The list of statements for CloudWatch Logs resource policy. |
 <!-- END_TF_DOCS -->
