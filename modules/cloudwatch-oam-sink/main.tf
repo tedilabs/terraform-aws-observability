@@ -33,7 +33,7 @@ resource "aws_oam_sink" "this" {
 
 
 ###################################################
-# CLoudWatch OAM Sink Policy
+# CloudWatch OAM Sink Policy
 ###################################################
 
 locals {
