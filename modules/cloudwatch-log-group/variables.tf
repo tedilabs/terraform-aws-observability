@@ -33,7 +33,7 @@ variable "streams" {
 
 variable "metric_filters" {
   description = <<EOF
-  (Required) A list of metric filters for CloudWatch log group. Log events that match the pattern you define are recorded to the metric that you specify. You can graph the metric and set alarms to notify you. Each item of `metric_filters` as defined below.
+  (Optional) A list of metric filters for CloudWatch log group. Log events that match the pattern you define are recorded to the metric that you specify. You can graph the metric and set alarms to notify you. Each item of `metric_filters` as defined below.
     (Required) `name` - A name for the metric filter.
     (Optional) `pattern` - A valid CloudWatch Logs filter pattern for extracting metric data out of ingested log events. Filter patterns are case sensitive. Defaults to `" "` (match everything in your log events).
     (Required) `metric` - A configuration to define how metric data gets emitted. `metric` as defined below.
